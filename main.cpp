@@ -7,16 +7,11 @@
 #include <unistd.h>
 
 using namespace std;
-
-@@ -13,11 +15,11 @@ const int boardSize = 8;
+const int boardSize = 8;
 
 struct Ship
 {
-    char[2] patrolBoat;
-    char[4] battleship;
-    char[3] submarine;
-    char[3] cruiser;
-    char[5] carrier;
+
     char patrolBoat[2];
     char battleship[4];
     char submarine[3];
@@ -25,7 +20,7 @@ struct Ship
 };
 
 //This prints the grid to screen
-@@ -33,12 +35,12 @@ void generateGrid(char shipsBoard[boardSize][boardSize], char hitMissBoard[board
+void generateGrid(char shipsBoard[boardSize][boardSize], char hitMissBoard[board
 //This function asks the user to input coordinates, then converts the user input into coordinates
 //Pre: Input from user in the format "A2"
 //Post: Returns "A2" in the format "1" "2"
@@ -40,7 +35,7 @@ char Menu(char yesNo);
 
 //This searches the grid to check if it's hit or miss
 //Pre: Board with ships generated and user input already converted
-@@ -56,14 +58,28 @@ int main()
+int main()
     char hitMissBoard [boardSize][boardSize];
     //2d array of size boardSize with ship data
     char shipsBoard [boardSize][boardSize];
@@ -72,7 +67,7 @@ char Menu(char yesNo);
     generateGrid(shipsBoard, hitMissBoard);
     printGrid(hitMissBoard);
     hitMissCheck(shipsBoard, X, Y);
-@@ -74,14 +90,77 @@ int main()
+int main()
 
 }
 
