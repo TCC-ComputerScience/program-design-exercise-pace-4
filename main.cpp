@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <cstring>
 
 using namespace std;
 
@@ -12,7 +13,7 @@ const int boardSize = 8;
 
 struct Ship
 {
-    char[2] destroyer;
+    char[2] patrolBoat;
     char[4] battleship;
     char[3] submarine;
     char[3] cruiser;
@@ -34,13 +35,19 @@ void generateGrid(char shipsBoard[boardSize][boardSize], char hitMissBoard[board
 //Post: Returns "A2" in the format "1" "2"
 void convertInput(int& X, int& Y);
 
+//This function prints the rules to the game and how the user will play it
+//Pre:
+//Post: menu printed to screen
+void Menu();
+
 //This searches the grid to check if it's hit or miss
 //Pre: Board with ships generated and user input already converted
 //Post: returns whether it was a hit or a miss
 bool hitMissCheck(char shipsBoard[boardSize][boardSize], int X, int Y);
 
 //This function updates the board with information on whether it was a hit or a miss
-//Pre:
+//Pre: Board with hit/misses from user input already, and user input already converted
+//Post:
 void updateBoard(char hitMissBoard[boardSize][boardSize], int X, int Y);
 
 int main()
@@ -55,7 +62,45 @@ int main()
     //Bool to hold whether it was a hit or miss
     bool hitMiss;
 
+    Menu();
+    convertInput(X, Y);
+    generateGrid(shipsBoard, hitMissBoard);
+    printGrid(hitMissBoard);
+    hitMissCheck(shipsBoard, X, Y);
+    updateBoard(hitMissBoard, X, Y);
+
     return 0;
 
 
+}
+
+void Menu()
+{
+    cout << "This prints the menu" << endl;
+}
+
+void convertInput(int& X, int& Y)
+{
+    cout << "This converts the user's input" << endl;
+}
+
+void generateGrid(char shipsBoard[boardSize][boardSize], char hitMissBoard[boardSize][boardSize])
+{
+    cout << "this generates a new/clean board and places ships on it." << endl;
+}
+
+void printGrid(char hitMissBoard[boardSize][boardSize])
+{
+    cout << "This prints the grid with ships hidden" << endl;
+}
+
+bool hitMissCheck(char shipsBoard[boardSize][boardSize], int X, int Y)
+{
+    cout << "This searches the grid to check if it's hit or miss" << endl;
+    return true;
+}
+
+void updateBoard(char hitMissBoard[boardSize][boardSize], int X, int Y)
+{
+    cout << "This function updates the board with information on whether it was a hit or a miss" << endl;
 }
