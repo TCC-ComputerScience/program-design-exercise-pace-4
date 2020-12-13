@@ -12,18 +12,22 @@ const int boardSize = 8;
 
 struct Ship
 {
-
+    char[2] destroyer;
+    char[4] battleship;
+    char[3] submarine;
+    char[3] cruiser;
+    char[5] carrier;
 };
 
 //This prints the grid to screen
 //Pre: Board with hit/miss info already initialized
 //Post: prints this board to screen
-void printGrid(char hitMissBoard[8][8]);
+void printGrid(char hitMissBoard[boardSize][boardSize]);
 
 //This resets the board and generates the ships using srand and rand time
 //Pre: Gather data to generate an 8x8 grid
 //Post: Grid with ships generated randomly
-void generateGrid(char shipsBoard[8][8], char hitMissBoard[8][8]);
+void generateGrid(char shipsBoard[boardSize][boardSize], char hitMissBoard[boardSize][boardSize]);
 
 //This function asks the user to input coordinates, then converts the user input into coordinates
 //Pre: Input from user in the format "A2"
@@ -33,11 +37,11 @@ void convertInput(int& X, int& Y);
 //This searches the grid to check if it's hit or miss
 //Pre: Board with ships generated and user input already converted
 //Post: returns whether it was a hit or a miss
-bool hitMissCheck(char shipsBoard[8][8], int X, int Y);
+bool hitMissCheck(char shipsBoard[boardSize][boardSize], int X, int Y);
 
 //This function updates the board with information on whether it was a hit or a miss
 //Pre:
-void updateBoard(char hitMissBoard[8][8], int X, int Y);
+void updateBoard(char hitMissBoard[boardSize][boardSize], int X, int Y);
 
 int main()
 {
@@ -51,7 +55,6 @@ int main()
     //Bool to hold whether it was a hit or miss
     bool hitMiss;
 
-    cout << "Hello world!" << endl;
     return 0;
 
 
