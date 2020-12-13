@@ -1,17 +1,20 @@
+//Jason Brewer
+//Zach Nahorney
+//Bryan Aguinaldo
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <cstring>
 #include <string>
 #include <iomanip>
 #include <unistd.h>
 
 using namespace std;
+
+//Constant integer to hold the size of the board
 const int boardSize = 8;
 
 struct Ship
 {
-
     char patrolBoat[2];
     char battleship[4];
     char submarine[3];
@@ -20,26 +23,41 @@ struct Ship
 };
 
 //This prints the grid to screen
-void generateGrid(char shipsBoard[boardSize][boardSize], char hitMissBoard[board
+//Pre: Board with hit/miss info already initialized
+//Post: prints this board to screen
+void printGrid(char hitMissBoard[boardSize][boardSize]);
+
+//This resets the board and generates the ships using srand and rand time
+//Pre: Gather data to generate an 8x8 grid
+//Post: Grid with ships generated randomly
+void generateGrid(char shipsBoard[boardSize][boardSize], char hitMissBoard[boardSize][boardSize]);
+
 //This function asks the user to input coordinates, then converts the user input into coordinates
 //Pre: Input from user in the format "A2"
 //Post: Returns "A2" in the format "1" "2"
-void convertInput(int& X, int& Y);
 void convertInput(int& X, int& Y, string input);
 
 //This function prints the rules to the game and how the user will play it
 //Pre:
 //Post: menu printed to screen
-void Menu();
 char Menu(char yesNo);
 
 //This searches the grid to check if it's hit or miss
 //Pre: Board with ships generated and user input already converted
+//Post: returns whether it was a hit or a miss
+bool hitMissCheck(char shipsBoard[boardSize][boardSize], int X, int Y);
+
+//This function updates the board with information on whether it was a hit or a miss
+//Pre: Board with hit/misses from user input already, and user input already converted
+//Post:
+void updateBoard(char hitMissBoard[boardSize][boardSize], int X, int Y);
+
 int main()
+{
+    //2d array of size boardSize with hit/miss data
     char hitMissBoard [boardSize][boardSize];
     //2d array of size boardSize with ship data
     char shipsBoard [boardSize][boardSize];
-    //X and Y integers to hold the user inputted coordinates
     //string input for user input and X and Y integers to hold the user inputted coordinates once converted
     string input;
     int X;
@@ -49,12 +67,10 @@ int main()
     //Bool to hold whether it was a hit or miss
     bool hitMiss;
 
-    Menu();
-    convertInput(X, Y);
     yesNo = Menu(yesNo);
     if(yesNo =='Y')
     {
-        cout << "Enter the spot you would like to shoot (format: A4 or C7): ";//enter format
+        cout << "Enter the spot you would like to shoot (format: A4 or C7): ";
         do
         {
             cin >> input;
@@ -67,14 +83,15 @@ int main()
     generateGrid(shipsBoard, hitMissBoard);
     printGrid(hitMissBoard);
     hitMissCheck(shipsBoard, X, Y);
-int main()
+    updateBoard(hitMissBoard, X, Y);
+
+    return 0;
+
 
 }
 
-void Menu()
 char Menu(char yesNo)
 {
-    cout << "This prints the menu" << endl;
     cout << "              _           _   _   _           _     _       " << endl;
     sleep(1);
     cout << "             | |         | | | | | |         | |   (_)      " << endl;
@@ -99,11 +116,11 @@ char Menu(char yesNo)
     cout << "                            _/|     _/|-++'" << endl;
     cout << "                        +  +--|    |--|--|_ |-" << endl;
     cout << "                     { /|__|  |/\\__|  |--- |||__/" << endl;
-    cout << "                    +---------------___[}-_===_.'____                 /\\" << endl;
+    cout << "                    +---------------___[}-_===_.'____                 /\\" << endl;//creates cool image of boaty
     cout << "                ____`-' ||___-{]_| _[}-  |     |_[___\\==--            \\/   _" << endl;
     cout << " __..._____--==/___]_|__|_____________________________[___\\==--____,------' .7" << endl;
     cout << "|                                                                     BB-61/" << endl;
-    cout << " \\_________________________________________________________________________|" << endl;//creates cool image of boaty
+    cout << " \\_________________________________________________________________________|" << endl;
     cout << "Art By: Matthew Bace" << endl << endl << endl;
     //sleep(3);
     cout << "The object of Battleship is to try and sink all enemy ships."<< endl;
@@ -121,15 +138,13 @@ char Menu(char yesNo)
         else if(yesNo == 'N')
             cout << "why did you even launch the program then...?" << endl;//IF NO
         else
-            cout << "Please enter either Y or N" << endl;//did not input a valid datatype
+            cout << "Please enter either Y or N" << endl;//did not input a valid char
     }while(yesNo != 'Y' && yesNo != 'N');
     return yesNo;
 }
 
-void convertInput(int& X, int& Y)
-void convertInput(int& X, int& Y, string input)
+void convertInput(int& X, int& Y, string input)//Converts the users value for board identifiers ex: A1
 {
-    cout << "This converts the user's input" << endl;//Converts the users value for board identifiers ex: A1
     switch(input[0])
     {
         case 'A' : Y = 0;//for the first half of the identifier
@@ -145,7 +160,26 @@ void convertInput(int& X, int& Y, string input)
     X = input[1];
     cout << endl << "X: " << X;
     cout << endl << "Y: " << Y;
-    cout << endl;
+
 }
 
 void generateGrid(char shipsBoard[boardSize][boardSize], char hitMissBoard[boardSize][boardSize])
+{
+    cout << "this generates a new/clean board and places ships on it." << endl;//this generates a new/clean board and places ships on it
+}
+
+void printGrid(char hitMissBoard[boardSize][boardSize])
+{
+    cout << "This prints the grid with ships hidden" << endl;//This prints the grid with ships hidden
+}
+
+bool hitMissCheck(char shipsBoard[boardSize][boardSize], int X, int Y)
+{
+    cout << "This searches the grid to check if it's hit or miss" << endl;//This searches the grid to check if it's hit or miss
+    return true;
+}
+
+void updateBoard(char hitMissBoard[boardSize][boardSize], int X, int Y)
+{
+    cout << "This function updates the board with information on whether it was a hit or a miss" << endl;//This function updates the board with information on whether it was a hit or a miss
+}
