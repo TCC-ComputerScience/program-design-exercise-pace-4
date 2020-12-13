@@ -122,13 +122,13 @@ char Menu(char yesNo)
     cout << "|                                                                     BB-61/" << endl;
     cout << " \\_________________________________________________________________________|" << endl;
     cout << "Art By: Matthew Bace" << endl << endl << endl;
-    //sleep(3);
+    sleep(3);
     cout << "The object of Battleship is to try and sink all enemy ships."<< endl;
     cout << "All ships are hidden to you and you must use grid coordinates"<< endl;
     cout << "to fire missiles to discover ships locations. If you hit a"<< endl;
     cout << "ship, it is represented with a * and if you miss, it is rep-"<< endl;
     cout << "resented with a H." << endl << endl;
-    //sleep(5);
+    sleep(5);
     cout << "Would you like to play? (Y or N)";
     do
     {
